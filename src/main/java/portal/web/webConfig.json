@@ -1,0 +1,5 @@
+{
+  "defaultBrowser": "chrome",
+  "defaultTimeout": "5",
+  "baseUrl": "https://10.128.11.14:9001"
+}

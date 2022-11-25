@@ -3,7 +3,7 @@ package portal.web.utils;
 import portal.common.JSONHelper;
 
 public class WebConfig {
-    private static final String webConfigFile = "src/main/java/heroku/web/webConfig.json";
+    private static final String webConfigFile = "src/main/java/portal/web/webConfig.json";
 
     public static String getDefaultBrowser(){
         return JSONHelper.getJSONStringFromJSONFile(webConfigFile, "defaultBrowser");

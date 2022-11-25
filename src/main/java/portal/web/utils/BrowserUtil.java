@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
 import io.github.bonigarcia.wdm.managers.FirefoxDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BrowserUtil {
@@ -16,7 +17,10 @@ public class BrowserUtil {
         switch (browserType){
             case "chrome":
                 ChromeDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
+                //Set ignore https unsafe warnings
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--ignore-ssl-errors=yes","--ignore-certificate-errors");
+                driver = new ChromeDriver(options);
                 break;
             case "firefox":
                 FirefoxDriverManager.firefoxdriver().setup();

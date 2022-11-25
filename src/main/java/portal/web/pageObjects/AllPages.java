@@ -7,6 +7,7 @@ public class AllPages {
     public LoginPage loginPage;
     public CourseDisplayPage courseDisplayPage;
     public CourseOverviewPage courseOverviewPage;
+    public CounterPage counterPage;
     private WebDriver driver;
 
     public AllPages(){
@@ -14,6 +15,7 @@ public class AllPages {
         loginPage = new LoginPage(driver);
         courseDisplayPage = new CourseDisplayPage(driver);
         courseOverviewPage = new CourseOverviewPage(driver);
+        counterPage = new CounterPage(driver);
     }
 
     public void closeBrowser(){

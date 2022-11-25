@@ -10,7 +10,7 @@ public class DefaultHooks {
     @BeforeSuite(alwaysRun = true)
     public void setup(){
         pages = new AllPages();
-        pages.counterPage.navigateTo();
+        //pages.counterPage.navigateTo();
     }
 
     @AfterSuite(alwaysRun = true)

@@ -26,13 +26,18 @@ public class CourseDisplayPage extends BasePage {
     public void clickHeaderDrawer(){
 
     }
-    public int headerCount(String headerType){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(defaultTimeout));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+    public int headerCount(){
         wait.until(ExpectedConditions.stalenessOf(driver.findElement(loadingSpinner)));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+
+        By selector = By.cssSelector("[class*='course-element']");
+
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(selector));
 
         WebElement courseContentContainer = driver.findElement(courseContent);
-        List<WebElement> elementList = courseContentContainer.findElements(By.cssSelector("[id^='Course-h2']"));
+
+        List<WebElement> elementList = courseContentContainer.findElements(selector);
+
         return elementList.size();
     }
 

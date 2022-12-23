@@ -22,6 +22,7 @@ public class DefaultHooks {
         pages.homePage.waitForAuthenticator();
         pages.homePage.CookieWriter();
         //*/
+        pages.homePage.navigateTo();
     }
 
     @AfterSuite(alwaysRun = true)

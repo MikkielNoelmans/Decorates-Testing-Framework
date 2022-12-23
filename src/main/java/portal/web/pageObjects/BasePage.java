@@ -1,8 +1,10 @@
 package portal.web.pageObjects;
 
+import org.junit.rules.ExpectedException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import portal.web.utils.WebConfig;
 
@@ -33,35 +35,38 @@ public class BasePage {
     public void navigateTo(String urlAddition) { driver.get(url + urlAddition); }
 
     public void clickDarkMode() {
+        wait.until(ExpectedConditions.elementToBeClickable(darkModeToggle));
         WebElement darkModeToggleBtn = driver.findElement(darkModeToggle);
+        String state = darkModeToggleBtn.getAttribute("aria-pressed");
+        String expectedState;
+        if (state.equals("true")) { expectedState = "false"; } else { expectedState = "true"; }
         darkModeToggleBtn.click();
+        wait.until(ExpectedConditions.attributeToBe(darkModeToggleBtn,"aria-pressed", expectedState));
+    }
+
+    public void driverWait (int time){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(time));
     }
 
     public boolean darkModeValue() {
         WebElement darkModeToggleBtn = driver.findElement(darkModeToggle);
         String darkModeState = darkModeToggleBtn.getAttribute("aria-pressed");
-        if(darkModeState == "false") {return false;} else {return true;}
+        if(darkModeState.equals("true")) { return true; } else { return false; }
     }
 
     public void clickDrawerToggle() {
         WebElement drawerToggleBtn = driver.findElement(drawerToggle);
         drawerToggleBtn.click();
     }
-    /*
-    //This function is limited due to blazor code and does currently not work
-
-    public boolean drawerToggleValue(){
-        WebElement drawerToggleBtn = driver.findElement(drawerToggle);
-
-    }
-    */
 
     public void clickHomeNav() {
+        wait.until(ExpectedConditions.elementToBeClickable(homeNav));
         WebElement homeNavBtn = driver.findElement(homeNav);
         homeNavBtn.click();
     }
 
     public void clickCourseNav() {
+        wait.until(ExpectedConditions.elementToBeClickable(courseNav));
         WebElement courseNavBtn = driver.findElement(courseNav);
         courseNavBtn.click();
     }

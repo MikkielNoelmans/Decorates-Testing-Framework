@@ -41,7 +41,7 @@ public class HomePage extends BasePage {
 
         WebElement passwordInputElement = driver.findElement(passwordInput);
         WebElement nextBtnElement = driver.findElement(nextBtn);
-        passwordInputElement.sendKeys("wachtwoord");
+        passwordInputElement.sendKeys("password");
         nextBtnElement.click();
     }
 
